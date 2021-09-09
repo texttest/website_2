@@ -1,4 +1,6 @@
 - name: Home
   link: /
+- name: How-To Guides
+  link: /how_to_guides
 - name: About
   link: /about.html

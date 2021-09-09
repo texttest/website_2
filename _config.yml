@@ -28,6 +28,9 @@ markdown: kramdown
 search_enabled: true
 plugins:
   - jekyll-feed
+collections:
+  how_to_guides:
+    output: true
 defaults:
   - scope:
       path: ""

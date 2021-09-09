@@ -1,0 +1,12 @@
+---
+layout: homepage
+---
+
+{{ content }}
+<ul>
+  {% for guide in site.how_to_guides %}
+    <li>
+      <a href="{{ guide.url }}">{{ guide.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
