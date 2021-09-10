@@ -3,7 +3,7 @@ layout: how_to_guide
 title: Configure Default Editor and Diff tool
 ---
 
-# Configure Editor and Diff tool
+# Configure Default Editor and Diff tool
 
 When you double-click on a file in the TextTest GUI it opens it for you in an editor. The default is emacs, which might not suit everyone. This article explains how to configure which editor and diff tool TextTest opens.
 
