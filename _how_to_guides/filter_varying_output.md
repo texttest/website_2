@@ -41,7 +41,7 @@ The idea is to write a regular expression that matches the part of the line you 
 
 Just after the regex, you can optionally add some curly brackets and give TextTest further instructions about what to do when it matches this pattern. In the first example above it will replace everything that matched the regex with the fixed string 'timestamp'. In the second example it uses a capture group in the regex to capture the non-varying part and make the filtered output more readable as well as stable. 
 
-## Solution2 - filter several lines of irrelevant output
+## Solution 2 - filter several lines of irrelevant output
 
 You might prefer to just ignore all the output lines between "Initializing AcmeDB" and "Ready to accept connections". In that case you could do run-dependent text like this:
 
@@ -55,7 +55,7 @@ Which would reduce the output to this:
 	timestamp Initializing AcmeDB ...
 	timestamp Ready to accept connections
 
-The directive x{->}y tells TextTest to filter all the lines in between the ones that match x and y.
+The directive `x{->}y` tells TextTest to filter all the lines in between the ones that match x and y.
 
 For full documentation about all the available TextTest options, see [the reference documentation](http://texttest.sourceforge.net/index.php?page=documentation_4_0&n=run_dependent_text#run_dependent_text).
 

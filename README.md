@@ -1,7 +1,7 @@
 Teaching materials for Technical Agile Coaches
 ==============================================
 
-This repo contains resources for technical agile coaches to use in their work. For more information, please read this book [Technical Agile Coaching](https://leanpub.com/techagilecoach) by Emily Bache.
+This repo contains documentation for [TextTest](https://github.com/texttest)
 
 To test locally:
 
@@ -11,4 +11,7 @@ To create the static site for deployment:
 
     bundle exec jekyll build
 
-copy the contents of \_site to the server
+Use the deployment script to upload the files to the webserver:
+
+    ./deploy.py
+

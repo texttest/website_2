@@ -31,6 +31,8 @@ plugins:
 collections:
   how_to_guides:
     output: true
+  reference:
+    output: true
 defaults:
   - scope:
       path: ""
