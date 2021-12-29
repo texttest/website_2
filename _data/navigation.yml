@@ -1,8 +1,12 @@
 - name: Home
   link: /
+- name: Tutorials
+  link: /tutorials
 - name: How-To Guides
   link: /how_to_guides
 - name: Reference
   link: /reference
+- name: Articles
+  link: /articles
 - name: About
   link: /about.html

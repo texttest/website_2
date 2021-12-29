@@ -16,8 +16,8 @@
 title: TextTest - an Approval Testing Framework
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Samman Technical Coaching is a method for people who want to make a difference and improve the way software is built. 
-  This site extends and supports the materials in the book "Technical Agile Coaching with the Samman Method" by Emily Bache.
+  TextTest is an open source tool for Approval Testing. It is particularly suited to large-scale tests for complex systems
+  and for testing legacy code.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://www.texttest.org" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: emilybache
@@ -29,15 +29,21 @@ search_enabled: true
 plugins:
   - jekyll-feed
 collections:
+  tutorials:
+    output: true
   how_to_guides:
     output: true
   reference:
+    output: true
+  articles:
     output: true
 defaults:
   - scope:
       path: ""
     values:
       layout: "default"
+kramdown:
+  auto_ids: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

@@ -3,7 +3,7 @@ layout: reference
 title: Install TextTest on Amazon Linux
 ---
 
-# Install TextTest on Amazon Linux
+# Install on Amazon Linux on EC2
 
 Detailed instructions follow.
 
