@@ -23,7 +23,14 @@ a:active {
 a:hover {
     color: $tt-green;
 }
-
+img[src*="#texttest_screenshot"] {
+  width: 75%;
+  height:auto;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
 body {
   margin-left: auto;
   margin-right: auto;
