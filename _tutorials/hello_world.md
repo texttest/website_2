@@ -17,13 +17,9 @@ Save this text to a file named `hello.py`:
     #!/usr/bin/env python
     print("Hello, World!")
 
-Make it executable on the command line:
-
-    chmod a+x hello.py
-
 When you've done that you should be able to execute the program and see the message:
 
-    $ ./hello.py
+    $ python hello.py
     Hello, World!
 
 Now we are ready to write a test for this program using TextTest.
@@ -33,12 +29,15 @@ Now we are ready to write a test for this program using TextTest.
 Create a folder to store your test cases in, below `hello.py`, called `tests` and put a file in it called `config.hello`, containing this text:
 
     executable:${TEXTTEST_HOME}/hello.py
+    interpreter:python
     filename_convention_scheme:standard
     full_name:Hello World
 
-The config file is absolutely central to how TextTest works, and it's important to get the format right.  These three key - value pairs specify for TextTest what's going to be tested, and there are many more options for this file which you will learn about later on. Note - it's important to use a colon `:` as separator for `key:value`, and that there should be no spaces on either side.
+The config file is absolutely central to how TextTest works, and it's important to get the format right.  These  key - value pairs specify for TextTest what's going to be tested, and there are many more options for this file which you will learn about later on. Note - it's important to use a colon `:` as separator for `key:value`, and that there should be no spaces on either side.
 
 The entry `executable` should contain the full path to the program we want to test. Here we are using the environment variable `TEXTTEST_HOME` but it could be an absolute path on your machine.
+
+The entry `interpreter` is actually optional, if your program is directly executable you don't need it. In this case we have a python script and we want to use python as the interpreter.
 
 The entry `filename_convention_scheme` defaults to `classic`, but the newer scheme `standard` is more consistent and easier to use. It has more sensible filenames when testing a command line program like this one.
 
@@ -56,7 +55,7 @@ Using a command prompt in the same folder as `hello.py`, start texttest:
     $ texttest
 
 ### Windows
-First set the environment variable `TEXTTEST_HOME` to the folder containing `hello.py`, then start TextTest from the windows menu.
+First set the environment variable `TEXTTEST_HOME` to the folder containing `hello.py`, then start TextTest from the windows menu. Alternatively, open Powershell in the same folder as the `hello.py` script and type `texttest`
 
 Texttest should open a new window that looks like this:
 
