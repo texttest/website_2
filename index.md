@@ -7,6 +7,10 @@ Full Texttest documentation is currently on this url: [http://texttest.sourcefor
 
 This site is intended to eventually replace that site with up-to-date relevant documentation and information about the [TextTest](https://github.com/texttest) framework. At some point it may be complete enough to replace the documentation currently hosted on sourceforge, but at the moment it's very much a work in progress.
 
+# News - online training available
+
+If you'd like to learn more about how to use TextTest and Approval testing in general, Emily Bache is running an [online training course](https://proagile.se/vara-kurser/approval-testing-en) this September. 
+
 # Getting Started with TextTest
 
 TextTest and related tools are designed to both execute existing test cases and to help you to develop new test cases. If you only want to be able to execute existing test cases and report failures to a file, the command line tools are enough. On a development machine where you will be actively maintaining and creating test cases, you will need the full install including development tools.
