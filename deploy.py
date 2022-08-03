@@ -43,11 +43,11 @@ def placeFiles(ftp, path):
 
 def main():
     if os.path.exists("credentials.txt"):
-            user, password, server = read_credentials("credentials.txt")
-        else:
-            user = os.environ["FTP_USER"]
-            password = os.environ["FTP_PASSWORD"]
-            server = os.environ["FTP_SERVER"]
+        user, password, server = read_credentials("credentials.txt")
+    else:
+        user = os.environ["FTP_USER"]
+        password = os.environ["FTP_PASSWORD"]
+        server = os.environ["FTP_SERVER"]
     print("found credentials", user, password, server)
 
     with FTP_TLS(host=server, user=user, passwd=password) as ftp:
