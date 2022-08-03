@@ -27,6 +27,7 @@ In that folder, clone the [texttest sourcecode](https://github.com/texttest/text
 You may find it convenient to set up a [virtual environment](https://docs.python.org/3/library/venv.html) and use that python to install texttest, so you can easily switch between your locally built texttest and the released version. The following command assumes you have set up a virtualenv and use it when you run `python`.
 
     $ cd texttest
+    $ python setup.py build
     $ python setup.py install
 
 This should create a texttest executable under the 'bin' directory of your python installation. This should be on  your $PATH so that this command will run texttest
