@@ -6,7 +6,7 @@ title: Scrubbing or Filtering output
 # Scrubbing or Filtering output
 If your program produces output that changes every test run, you will want to remove it before comparing output against the approved version, otherwise your test will fail all the time. Typically this means removing process ids, timestamps or temporary directory names.
 
-There is already a [How-to guide]({{ site.baseurl }}{% link /_how_to_guides/filter_varying_output.md  %}) which explains how to handle timestamps and process ids. This reference lists all alternatives.
+There is already a [How-to guide]({{ site.baseurl }}{% link _how_to_guides/filter_varying_output.md  %}) which explains how to handle timestamps and process ids. This reference lists all alternatives.
 
 ## Quick start guide
 At the end of your config file add a section like this:
@@ -28,7 +28,7 @@ For example to scrub this directory when shown in standard error:
     [scrubbers]
     stderr:{INTERNAL writedir}
 
-## Scrubbing when you encounter <pattern>
+## Scrubbing when you encounter a pattern
 If you have a RegEx matching a particular part of your output, you can control how much text is then scrubbed.
 
 ### Replace the matching text with some fixed text
