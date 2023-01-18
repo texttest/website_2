@@ -1,11 +1,11 @@
 ---
 layout: how_to_guide
-title: Filter Varying Output
+title: Filter Varying Output with Scrubbers
 ---
 
-# Filter Varying Output
+# Filter Varying Output with Scrubbers
 
-Often when you're Approval testing a program it will produce some output that varies every time you run the test. You don't want the test to fail every time when a process ID or a date changes. In TextTest we call this 'filtering run dependent text'. Other tools call it 'scrubbing' the output.
+Often when you're Approval testing a program it will produce some output that varies every time you run the test. You don't want the test to fail every time when a process ID or a date changes. In TextTest we call this 'filtering run dependent text' or 'scrubbing' the output.
 
 For example if this is your approved standard output file:
 
@@ -19,9 +19,9 @@ Since the timestamps and process ID are different every time you run the program
 
 ## Solution 1 - filter the timestamps and process ids
 
-In your config file for the tested application, you can use an entry "run_dependent_text" like this:
+In your config file for the tested application, add an entry like this:
 
-	[run_dependent_text]
+	[scrubbers]
 	stdout:^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}{REPLACE timestamp}
 	stdout:(process_id)=\d+{REPLACE \1=1234}
 
@@ -45,7 +45,7 @@ Just after the regex, you can optionally add some curly brackets and give TextTe
 
 You might prefer to just ignore all the output lines between "Initializing AcmeDB" and "Ready to accept connections". In that case you could do run-dependent text like this:
 
-	[run_dependent_text]
+	[scrubbers]
 	stdout:^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}{REPLACE timestamp}
 	stdout:Initializing AcmeDB{->}Ready to accept connections
 
