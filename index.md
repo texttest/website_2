@@ -17,7 +17,7 @@ The command-line tools enable you to run existing test cases and report test res
 
     pip install texttest
 
-Then you should be able to [run tests on the command line](/how_to_guides/texttest_cli.html) and [run tests unattended](/how_to_guides/batch_mode.md). If you want to be able to create and maintain test cases, you will also need to install the development tools, as explained in the next section.
+Then you should be able to [run tests on the command line](/how_to_guides/texttest_cli.html) and [run tests unattended](/how_to_guides/batch_mode.html). If you want to be able to create and maintain test cases, you will also need to install the development tools, as explained in the next section.
 
 ## Installing TextTest Development Tools
 
