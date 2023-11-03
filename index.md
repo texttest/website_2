@@ -13,11 +13,11 @@ TextTest and related tools are designed to both execute existing test cases and 
 
 ## Command-line tools
 
-The command-line tools enable you to run existing test cases and report test results. First install a recent version of [Python](https://www.python.org/): 3.6 or higher. Then use pip to install texttest:
+The command-line tools enable you to run existing test cases and report test results. First install a recent version of [Python](https://www.python.org/): 3.6 or higher. We also recommend [creating a virtual environment](https://docs.python.org/3/library/venv.html) to run TextTest in. When you have activated your virtual environment, use pip to install TextTest:
 
-    pip install texttest
+    python -m pip install texttest
 
-Then you should be able to [run tests on the command line](/how_to_guides/texttest_cli.html) and [run tests unattended](/how_to_guides/batch_mode.html). If you want to be able to create and maintain test cases, you will also need to install the development tools, as explained in the next section.
+You should now be able to [run tests on the command line](/how_to_guides/texttest_cli.html) and [run tests unattended](/how_to_guides/batch_mode.html). If you want to be able to create and maintain test cases, you will also need to install the development tools, as explained in the next section.
 
 ## Installing TextTest Development Tools
 

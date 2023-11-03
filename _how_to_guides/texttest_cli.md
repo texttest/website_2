@@ -7,15 +7,15 @@ title: Running tests on the Command Line
 
 Sometimes you don't have access to the TextTest development tools, and all you want to do is run your tests and get a report of whether they passed or not. You can run a suite of tests using TextTest's command line interface. If any tests fail, it will also let you interactively approve or reject the new results.
 
-### Linux
-Open a command prompt in the same folder as the test suite, then start texttest's command-line interface:
+### Linux, Mac
+Open a command prompt in the same folder as the test suite, or set the environment variable `TEXTTEST_HOME` to the location of your test suite. Then start texttest's command-line interface:
 
     texttest -con
 
 ### Windows
 First set the environment variable `TEXTTEST_HOME` to the location of your test suite, then start texttest on the command line:
 
-    texttest -con
+    texttestc -con
 
 ## Expected output
 For a hello world application you might expect this kind of output:
