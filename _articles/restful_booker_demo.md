@@ -12,7 +12,7 @@ _This article accompanies the video [Beyond Code Katas - Approval Testing a REST
 Code katas are great for practicing your skills. By necessity though these are small problems, and your production code is on a completely different scale. In this article I want to show you a kind of code kata that’s a little bit larger. It’s a back-end service with a database, written in node.js. It has a REST API and is backed by a Mongo database. It's a little bit closer to a real world system than your average code kata. Let's look at a good way to get this code under control using TextTest and CaptureMock.
 
 ## The System under Test - Restful Booker
-The code for [Restful Booker](https://github.com/texttest/restful-booker) is forked under the TextTest project on Github. It's a fork based on [Mark Winteringham's code](https://github.com/mwinteringham/restful-booker). Mark does workshops and trainings for testers, and he created this application to help teach good strategies for exploring and manual testing an API. Restful Booker is deliberately designed to be buggy, often in subtle ways. It's also designed with fairly comprehensive documentation so you can assess the value of that too.
+The code for [Restful Booker](https://github.com/texttest/restful-booker) is a worked example under the TextTest project on Github. It's a fork based on [Mark Winteringham's code](https://github.com/mwinteringham/restful-booker). Mark does workshops and trainings for testers, and he created this application to help teach good strategies for exploring and manual testing an API. Restful Booker is deliberately designed to be buggy, often in subtle ways. It's also designed with fairly comprehensive documentation so you can assess the value of that too.
 
 I'm using this code slightly differently - my concern is how to write automated tests for this service that will be reliable, fast and comprehensive enough to support refactoring, and not too much work to create or maintain. I've used TextTest and CaptureMock in this role on a microservices production system I worked on previously, and I'm also drawing on the experiences of Geoff Bache testing several other service-based and microservices systems. So even though this is a toy example, I think it illustrates a viable approach.
 
@@ -39,10 +39,10 @@ This is the only change to the actual application code, in [app.js](https://gith
 
 The first and last lines would have been there anyway - they are enabling the swagger documentation to appear on the url `/api-docs`. The additional code checks for the environment variable `CAPTUREMOCK_SERVER` and does nothing if it is not set. The rest of this code is a little bit awkward to understand. It's setting an option to insert a `requestInterceptor` - a little piece of code that will be called whenever you use Swagger. This enables [CaptureMock](https://github.com/texttest/capturemock) to be a 'man in the middle' intercepting and processing all Swagger-generated traffic between the browser and the Restful Booker.
 
-In the video demo you see the 'httpmock' files that detail this kind of traffic. [CaptureMock](https://github.com/texttest/capturemock) generates these files using this interception process.
+In the video demo you see the 'httpmock' files that detail this kind of traffic. [CaptureMock](https://github.com/texttest/capturemock) generates these files from the traffic it intercepts.
 
 ## Configuring TextTest's Test Rig
-Key to the sandboxing process is being able to start and run your entire application, including the database, from a command-line script. Normally you'd start Restful Booker using `npm start`, and TextTest could run that directly, but there is actually a bunch of other stuff that needs configuring too. Often it's convenient to write a Test Rig - an additional script that does some setup before doing the equivalent of 'npm start', and may do some extra processing of results at the end.
+Key to this testing approach is being able to start and run your entire application, including the database, from a command-line script. Normally you'd start Restful Booker using `npm start`, and TextTest could run that directly, but there is actually a bunch of other stuff that needs configuring too. Often it's convenient to write a Test Rig for an application under test. It's an additional script that does some setup before doing the equivalent of 'npm start', and may do some extra processing of results at the end.
 
 The Test Rig for Restful Booker is a Python script [test_rig.py](https://github.com/texttest/restful-booker/blob/main/integration_tests/test_rig.py). I show it briefly in the video. It makes use of the companion tools [DBText](https://github.com/texttest/dbtext) and [CaptureMock](https://github.com/texttest/capturemock). This is an overview of what it does: 
 
@@ -64,6 +64,28 @@ This file is used by TextTest to find out everything it needs to know in order t
 * 'dbtext_database_path' points out the location of the text files to use to populate the database.
 * 'import_config_file' tells it to import the configuration CaptureMock needs from [another config file](https://github.com/texttest/restful-booker/blob/main/integration_tests/capturemockrc.rb)
 * 'run_dependent_text' is a collection of directives to scrub or filter specific aspects of the output before deciding whether the test has passed or not.
+
+## Sample tests - on the 'with_texttests' branch
+In the main branch there are no test cases defined - this is the starting point for the demo. If you change to the 'with_texttests' branch then you will find test cases for all of the endpoints, not only the two I show in the demo.
+
+Each test case is specified by a folder containing text files. The name of the folder is the name of the test case. The order to run them in is specified in the [testsuite](https://github.com/texttest/restful-booker/blob/with_texttests/integration_tests/testsuite.rb) file. Each test case folder contains all the files that are unique to that test - usually 4 files.
+
+* httpmocks.rb - the recorded traffic between Swagger and Restful Booker's API.
+* db_booker_xxx.rb - the changes in the database between the start and end of the test.
+* stderr.rb - the output expected on standard error. 
+* stdout.rb - the output expected on standard output.
+
+When TextTest runs the test, it will execute the test rig, and afterwards compare the contents of all of these files against the actual output it got. Any difference will fail the test. (Although it is configured to scrub or filter certain aspects of these files before doing that comparison)
+
+## There are bugs yet the tests pass
+As I said earlier, Restful Booker is intentionally buggy, so that it makes a good exercise for testers. For example in this [httpmocks](https://github.com/texttest/restful-booker/blob/with_texttests/integration_tests/delete_booking/httpmocks.rb) file:
+
+    <-CLI:DELETE /booking/2
+    --HEA:Authorization=Basic YWRtaW46cGFzc3dvcmQxMjM=
+    ->SRV:201 Created
+    --HEA:Content-Type=text/plain; charset=utf-8
+
+You can see it's recorded an interaction where you're trying to delete a booking. The server response is '201 Created'. This is almost certainly the wrong HTTP code for this situation. Yet, I have approved this output and stored it in my test case. In a real application situation I would not have approved this - I would have fixed it! My purpose here is to show how to automate these tests, not to enumerate and fix all the bugs :-)
 
 What else would you like to know? Please leave a comment on the video or the [TextTest-users mailing list](https://sourceforge.net/p/texttest/mailman/texttest-users/).
 
