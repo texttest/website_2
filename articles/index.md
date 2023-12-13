@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: article_index
 title: Articles
 ---
 
