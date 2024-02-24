@@ -37,7 +37,7 @@ This leads to filtered output like this:
 
 The key 'stdout' here means that the run-dependent (varying) text will be found in standard output. You could also write 'stderr' here for standard error, or another filename key.
 
-The idea is to write a regular expression that matches the part of the line you want to remove or replace. You can use an online regex tool to help you to design a good one - for example [pythex](https://pythex.org/) or [regex101.com](https://regex101.com/). TextTest uses the [Python regular expression syntax](https://docs.python.org/3/library/re.html#regular-expression-syntax).
+The idea is to write a regular expression that matches the part of the line you want to remove or replace. You can use an online regex tool to help you to design a good one - for example [pythex](https://pythex.org/), [pyrexpPython ](https://pythonium.net/regex) or [regex101.com](https://regex101.com/). TextTest uses the [Python regular expression syntax](https://docs.python.org/3/library/re.html#regular-expression-syntax).
 
 Just after the regex, you can optionally add some curly brackets and give TextTest further instructions about what to do when it matches this pattern. In the first example above it will replace everything that matched the regex with the fixed string 'timestamp'. In the second example it uses a capture group in the regex to capture the non-varying part and make the filtered output more readable as well as stable. 
 
